@@ -14,6 +14,7 @@ class User(AbstractBaseUser, PermissionsMixin, CreatedAndUpdatedAtMixin):
     is_active = models.BooleanField(
         default=False, help_text="Used to activate user through email"
     )
+    is_staff = models.BooleanField(default=False)
     is_superuser = models.BooleanField(default=False)
 
     USERNAME_FIELD = "email"

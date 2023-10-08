@@ -35,6 +35,20 @@ argon2 = ["argon2-cffi (>=19.1.0)"]
 bcrypt = ["bcrypt"]
 
 [[package]]
+name = "django-filter"
+version = "23.3"
+description = "Django-filter is a reusable Django application for allowing users to filter querysets dynamically."
+optional = false
+python-versions = ">=3.7"
+files = [
+    {file = "django-filter-23.3.tar.gz", hash = "sha256:015fe155582e1805b40629344e4a6cf3cc40450827d294d040b4b8c1749a9fa6"},
+    {file = "django_filter-23.3-py3-none-any.whl", hash = "sha256:65bc5d1d8f4fff3aaf74cb5da537b6620e9214fb4b3180f6c560776b1b6dccd0"},
+]
+
+[package.dependencies]
+Django = ">=3.2"
+
+[[package]]
 name = "djangorestframework"
 version = "3.14.0"
 description = "Web APIs for Django, made easy."
@@ -48,6 +62,17 @@ files = [
 [package.dependencies]
 django = ">=3.0"
 pytz = "*"
+
+[[package]]
+name = "pyclean"
+version = "2.7.5"
+description = "Pure Python cross-platform pyclean. Clean up your Python bytecode."
+optional = false
+python-versions = "*"
+files = [
+    {file = "pyclean-2.7.5-py3-none-any.whl", hash = "sha256:d0162d2515ee7eef8903cfac3e7c84e114b7423ebd098d1f56c93ee2dc01d214"},
+    {file = "pyclean-2.7.5.tar.gz", hash = "sha256:5c5eb5771f46d2becd6ac085b0ff6ad17be315af4a01f9dd5e05b0582bb3d441"},
+]
 
 [[package]]
 name = "pytz"
@@ -90,4 +115,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11"
-content-hash = "f947cdad0c00e2411074f410237d94e1f0eb9c64a55975de03af40ea552b31bd"
+content-hash = "3fd289eb3b3b8d9087ebe01b08524186bed738674d7bf29aca8969d5702d39ff"

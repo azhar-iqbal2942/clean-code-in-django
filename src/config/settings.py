@@ -15,9 +15,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
 
-# Implemented Custom User Model
-AUTH_USER_MODEL = "database.User"
-
 
 INSTALLED_APPS = [
     "django.contrib.admin",
@@ -28,6 +25,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "repository.database",
     "rest_framework",
+    "django_filters",
 ]
 
 MIDDLEWARE = [
@@ -113,11 +111,15 @@ STATIC_URL = "static/"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
+# Implemented Custom User Model
+AUTH_USER_MODEL = "database.User"
+
 #########################
 # REST FRAMEWORK CONFIG #
 #########################
 REST_FRAMEWORK = {
     "DEFAULT_PERMISSION_CLASSES": [
         "rest_framework.permissions.AllowAny",
-    ]
+    ],
+    "DEFAULT_FILTER_BACKENDS": ["django_filters.rest_framework.DjangoFilterBackend"],
 }
