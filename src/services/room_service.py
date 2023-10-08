@@ -1,7 +1,6 @@
 from django_filters import rest_framework as filters
 
-# TODO: import model using contenttype
-from repository.database.room.models import Room
+from repository.database.models import Room
 
 
 class RoomService:

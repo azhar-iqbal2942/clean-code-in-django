@@ -10,5 +10,4 @@ class RoomView(APIView):
     permission_classes = (AllowAny,)
 
     def get(self, request):
-        response = RoomHandler().handle_get_room_list(request)
-        return Response(data={"data": "Working"}, status=status.HTTP_200_OK)
+        return RoomHandler().handle_get_room_list(request)
