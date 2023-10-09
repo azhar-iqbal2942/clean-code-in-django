@@ -151,17 +151,6 @@ files = [
 referencing = ">=0.28.0"
 
 [[package]]
-name = "pyclean"
-version = "2.7.5"
-description = "Pure Python cross-platform pyclean. Clean up your Python bytecode."
-optional = false
-python-versions = "*"
-files = [
-    {file = "pyclean-2.7.5-py3-none-any.whl", hash = "sha256:d0162d2515ee7eef8903cfac3e7c84e114b7423ebd098d1f56c93ee2dc01d214"},
-    {file = "pyclean-2.7.5.tar.gz", hash = "sha256:5c5eb5771f46d2becd6ac085b0ff6ad17be315af4a01f9dd5e05b0582bb3d441"},
-]
-
-[[package]]
 name = "pytz"
 version = "2023.3.post1"
 description = "World timezone definitions, modern and historical"
@@ -395,4 +384,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11"
-content-hash = "08f3fbaa4adf424dff93ad06925bf1c7541b6135d5a4c5e9c8b2dfa128bf4b56"
+content-hash = "2fa0c67f65c83cb72430f4136deea3815203083daec2cae0c4c288b9ad6bfd01"
