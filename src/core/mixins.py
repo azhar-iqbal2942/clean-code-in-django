@@ -3,7 +3,7 @@ from django.db import models
 
 class CreatedAndUpdatedAtMixin(models.Model):
     """
-    This mixin introduces two new fields that store the created on and updated on
+    This mixin introduces two new fields that store the created at and updated at
     timestamps.
     """
 

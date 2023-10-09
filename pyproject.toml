@@ -11,6 +11,7 @@ django = "4.2"
 djangorestframework = "^3.14.0"
 django-filter = "^23.3"
 pyclean = "^2.7.5"
+drf-spectacular = "^0.26.5"
 
 
 [build-system]
