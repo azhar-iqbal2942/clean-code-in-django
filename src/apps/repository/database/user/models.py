@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin
 
-from core.mixins import CreatedAndUpdatedAtMixin
+from apps.core.mixins import CreatedAndUpdatedAtMixin
 from .manager import UserManager
 
 

@@ -3,8 +3,8 @@ from rest_framework.permissions import AllowAny
 from drf_spectacular.utils import OpenApiParameter, extend_schema
 from drf_spectacular.types import OpenApiTypes
 
-from handlers.room_handler import RoomHandler
-from serializers.room_serializer import RoomSerializer
+from apps.handlers.room_handler import RoomHandler
+from apps.serializers.room_serializer import RoomSerializer
 
 
 class RoomView(APIView):

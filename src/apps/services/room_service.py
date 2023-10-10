@@ -1,6 +1,6 @@
 from django_filters import rest_framework as filters
 
-from repository.database.models import Room
+from apps.repository.database.models import Room
 
 
 class RoomService:

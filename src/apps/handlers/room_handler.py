@@ -1,10 +1,10 @@
 from django.http import HttpRequest
 from rest_framework import status
 
-from services.room_service import RoomFilter
-from repository.database.models import Room
-from serializers.room_serializer import RoomSerializer
-from core.responses import Response
+from apps.services.room_service import RoomFilter
+from apps.repository.database.models import Room
+from apps.serializers.room_serializer import RoomSerializer
+from apps.core.responses import Response
 
 
 class RoomHandler:

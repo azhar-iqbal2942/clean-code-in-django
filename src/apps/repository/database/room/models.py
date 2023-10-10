@@ -1,7 +1,7 @@
 from django.db import models
 
-from core.mixins import CreatedAndUpdatedAtMixin
-from core.utils import float_to_integer
+from apps.core.mixins import CreatedAndUpdatedAtMixin
+from apps.core.utils import float_to_integer
 
 
 class Room(CreatedAndUpdatedAtMixin, models.Model):

@@ -21,7 +21,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "repository.database",
+    "apps.repository.database",
     "rest_framework",
     "django_filters",
     "drf_spectacular",
