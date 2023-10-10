@@ -15,8 +15,11 @@ def float_to_integer(price_in_float, currency_factor=100):
     whole number.
     """
 
-    price_in_cents = round(price_in_float * currency_factor)
-    price_in_integer = int(price_in_cents)
+    if currency_factor == 1:
+        price_in_integer = int(price_in_float)
+    else:
+        price_in_cents = round(price_in_float * currency_factor)
+        price_in_integer = int(price_in_cents)
 
     return price_in_integer
 
@@ -24,7 +27,7 @@ def float_to_integer(price_in_float, currency_factor=100):
 def integer_to_float(price_in_integer, currency_factor=100):
     """
     The function converts an integer price to a float by dividing it by a currency factor.
-    
+
     :param price_in_integer: The price in integer format that you want to convert to float. This is the
     original price value before converting it to a different currency or format
     :param currency_factor: The currency_factor is a value that represents the conversion rate from the
@@ -34,6 +37,9 @@ def integer_to_float(price_in_integer, currency_factor=100):
     :return: the price_in_float, which is the price in float format after dividing the price_in_integer
     by the currency_factor.
     """
-    price_in_float = float(price_in_integer) / currency_factor
+    if currency_factor == 1:
+        price_in_float = float(price_in_integer)
+    else:
+        price_in_float = float(price_in_integer) / currency_factor
 
     return price_in_float
