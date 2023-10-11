@@ -6,8 +6,11 @@ pytest -v
 pytest -s
 # To run test and see strout|strerr 
 pytest -v -s 
-# To run integration test
+# To run integration tests 
 pytest -v --integration 
+
+# To only run integration tests
+pytest -v -m integration
 ```
 ---
 `pytest -v`

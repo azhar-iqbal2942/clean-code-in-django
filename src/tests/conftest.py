@@ -1,6 +1,13 @@
 import pytest
 
 
+@pytest.fixture
+def api_client():
+    from rest_framework.test import APIClient
+
+    return APIClient()
+
+
 def pytest_addoption(parser):
     """
     The `pytest_addoption` function adds a command line option `--integration` to pytest, allowing users
