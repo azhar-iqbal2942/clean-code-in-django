@@ -1,4 +1,10 @@
 import pytest
+from pytest_factoryboy import register
+
+from .factories import UserFactory
+
+# name of fixture is user_factory
+register(UserFactory)
 
 
 @pytest.fixture
