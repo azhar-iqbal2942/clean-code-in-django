@@ -1,4 +1,14 @@
-## To test Application we are using pytest.Below are the commands to test different parts of the app.
+# Pytest
+
+### Commands
+```bash
+pytest -v 
+pytest -s
+# To run test and see strout|strerr 
+pytest -v -s 
+# To run integration test
+pytest -v --integration 
+```
 ---
 `pytest -v`
 
