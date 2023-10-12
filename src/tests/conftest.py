@@ -1,10 +1,11 @@
 import pytest
 from pytest_factoryboy import register
 
-from .factories import UserFactory
+from .factories import UserFactory, RoomFactory
 
-# name of fixture is user_factory
-register(UserFactory)
+
+register(UserFactory)  # name of fixture is user_factory
+register(RoomFactory)  # name of fixture is room_factory
 
 
 @pytest.fixture

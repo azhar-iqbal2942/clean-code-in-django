@@ -1,11 +1,24 @@
 # type: ignore
 import factory
-
-from django.contrib.auth.models import Group
-from apps.repository.database.user.models import User
+from apps.repository.database.models import User, Room
 
 
-class UserFactory(factory.DjangoModelFactory):
+class RoomFactory(factory.django.DjangoModelFactory):
+    class Meta:
+        model = Room
+
+    code = factory.Faker("uuid4")
+    size = factory.Faker("random_int", min=10, max=1000)
+    price = factory.Faker("random_int", min=10, max=1000)
+    longitude = factory.Faker(
+        "random_element", elements=(-0.09998975, 0.18228006, 0.27891577, 0.33894476)
+    )
+    latitude = factory.Faker(
+        "random_element", elements=(51.75436293, 51.74640997, 51.45994069, 51.39916678)
+    )
+
+
+class UserFactory(factory.django.DjangoModelFactory):
     class Meta:
         model = User
 
@@ -13,12 +26,3 @@ class UserFactory(factory.DjangoModelFactory):
     last_name = factory.Sequence(lambda n: f"doe{n}")
     email = factory.Sequence(lambda n: f"lennon{n}@thebeatles.com")
     password = factory.PostGenerationMethodCall("set_password", "secure_password")
-
-
-@factory.post_generation
-def has_default_group(self, create, extracted, **kwargs):
-    if not create:
-        return
-    if extracted:
-        default_group, _ = Group.objects.get_or_create(name="group")
-        self.groups.add(default_group)

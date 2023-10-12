@@ -5,7 +5,8 @@ pytestmark = pytest.mark.integration
 
 
 @pytest.mark.django_db
-def test_room_with_no_query_param(api_client):
+def test_room_with_no_query_param(api_client, room_factory):
+    _ = room_factory()
     url = reverse("rooms")
     http_response = api_client.get(url)
 
