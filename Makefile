@@ -2,6 +2,6 @@
 .SILENT:
 
 clean:
-	find . -type f -name '*.py[co]' -delete -o -type d -name __pycache__ -delete
+	find . -type f -name '*.py[co]' -o -type f -name ".coverage" -o -type d -name __pycache__ -o -type d -name .pytest_cache  | xargs rm -rf
 	echo "Process Completed"
 
