@@ -1,2 +1,2 @@
-# Production Ready Django template with complete flow.
+# Production Ready Django template.
 
