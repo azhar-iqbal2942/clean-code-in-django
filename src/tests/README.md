@@ -3,14 +3,18 @@
 ### Commands
 ```bash
 pytest -v 
-pytest -s
+# -s has some performance implications. So use it wisely 
+pytest -s 
 # To run test and see strout|strerr 
 pytest -v -s 
-# To run integration tests 
+# To run integration tests along unit tests
 pytest -v --integration 
 
 # To only run integration tests
 pytest -v -m integration
+
+# To check test coverage
+pytest --cov
 ```
 ---
 `pytest -v`

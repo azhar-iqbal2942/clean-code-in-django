@@ -9,7 +9,7 @@ class RoomFactory(factory.django.DjangoModelFactory):
 
     code = factory.Faker("uuid4")
     size = factory.Faker("random_int", min=10, max=1000)
-    price = factory.Faker("random_int", min=10, max=1000)
+    price = factory.Faker("random_element", elements=(19.99, 2.99, 5.99, 10.99))
     longitude = factory.Faker(
         "random_element", elements=(-0.09998975, 0.18228006, 0.27891577, 0.33894476)
     )
