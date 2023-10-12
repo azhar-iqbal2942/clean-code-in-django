@@ -11,6 +11,9 @@ django = "4.2"
 djangorestframework = "^3.14.0"
 django-filter = "^23.3"
 drf-spectacular = "^0.26.5"
+django-redis = "^5.4.0"
+django-cachalot = "^2.6.1"
+environs = "^9.5.0"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^7.4.2"

@@ -1,5 +1,9 @@
 from pathlib import Path
+from environs import Env
 
+
+env = Env()
+env.read_env()
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -21,10 +25,13 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    # local app
     "apps.repository.database",
+    # Third party apps
     "rest_framework",
     "django_filters",
     "drf_spectacular",
+    "cachalot",
 ]
 
 MIDDLEWARE = [
@@ -123,3 +130,56 @@ REST_FRAMEWORK = {
     "DEFAULT_FILTER_BACKENDS": ["django_filters.rest_framework.DjangoFilterBackend"],
     "DEFAULT_SCHEMA_CLASS": "api.rest.openapi.AutoSchema",
 }
+
+
+######################
+# CACHE REDIS CONFIG #
+######################
+CACHES = {
+    "default": {
+        "BACKEND": "django_redis.cache.RedisCache",
+        "LOCATION": "redis://127.0.0.1:6379/1",
+        "KEY_PREFIX": "default-cache",
+        "OPTIONS": {
+            "CLIENT_CLASS": "django_redis.client.DefaultClient",
+            "CONNECTION_POOL_KWARGS": {"max_connections": 100},
+        },
+    }
+}
+
+
+#############
+# CACHEALOT #
+#############
+CACHALOT_ENABLED = env.bool("CACHALOT_ENABLED")
+
+
+def install_cachalot():
+    global CACHALOT_ONLY_CACHABLE_TABLES
+    global CACHALOT_TIMEOUT
+    global INSTALLED_APPS
+
+    INSTALLED_APPS.append("cachalot")
+    CACHALOT_ONLY_CACHABLE_TABLES = env.list("CACHALOT_ONLY_CACHABLE_TABLES", [])
+    CACHALOT_MODE = env.str("CACHALOT_MODE", "default")
+
+    if CACHALOT_MODE == "full":
+        CACHALOT_ONLY_CACHABLE_TABLES = []
+
+    elif CACHALOT_ONLY_CACHABLE_TABLES:
+        # Please avoid to add tables with more than 50 modifications per minute
+        # to this list, as described here:
+        # https://django-cachalot.readthedocs.io/en/latest/limits.html
+        CACHALOT_ONLY_CACHABLE_TABLES = CACHALOT_ONLY_CACHABLE_TABLES.split(",")
+    else:
+        CACHALOT_ONLY_CACHABLE_TABLES = [
+            "database_user",
+            "django_content_type",
+            "database_room",
+        ]
+
+    CACHALOT_TIMEOUT = env.int("CACHALOT_TIMEOUT", 60 * 60 * 24 * 7)
+
+
+# if CACHALOT_ENABLED:
+#     install_cachalot()
