@@ -7,6 +7,7 @@ env.read_env()
 CACHALOT_ENABLED = env.bool("CACHALOT_ENABLED")
 CACHALOT_ONLY_CACHABLE_TABLES = env.list("CACHALOT_ONLY_CACHABLE_TABLES", [])
 CACHALOT_MODE = env.str("CACHALOT_MODE", "default")
+SWAGGER_ENABLE = env.bool("SWAGGER_ENABLE", False)
 
 
 def install_cachalot():
