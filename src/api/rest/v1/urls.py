@@ -1,7 +1,6 @@
-from django.urls import path
+from django.urls import path, include
 
-from .room import RoomView
 
 urlpatterns = [
-    path("rooms", RoomView.as_view(), name="rooms"),
+    path("rooms/", include("api.rest.v1.room.urls", namespace="v1_rooms")),
 ]

@@ -1,9 +1,6 @@
 from pathlib import Path
-from environs import Env
+from .configuration import *
 
-
-env = Env()
-env.read_env()
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -49,7 +46,7 @@ ROOT_URLCONF = "config.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        "DIRS": [BASE_DIR.parent / "templates"],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -151,35 +148,5 @@ CACHES = {
 #############
 # CACHEALOT #
 #############
-CACHALOT_ENABLED = env.bool("CACHALOT_ENABLED")
-
-
-def install_cachalot():
-    global CACHALOT_ONLY_CACHABLE_TABLES
-    global CACHALOT_TIMEOUT
-    global INSTALLED_APPS
-
-    INSTALLED_APPS.append("cachalot")
-    CACHALOT_ONLY_CACHABLE_TABLES = env.list("CACHALOT_ONLY_CACHABLE_TABLES", [])
-    CACHALOT_MODE = env.str("CACHALOT_MODE", "default")
-
-    if CACHALOT_MODE == "full":
-        CACHALOT_ONLY_CACHABLE_TABLES = []
-
-    elif CACHALOT_ONLY_CACHABLE_TABLES:
-        # Please avoid to add tables with more than 50 modifications per minute
-        # to this list, as described here:
-        # https://django-cachalot.readthedocs.io/en/latest/limits.html
-        CACHALOT_ONLY_CACHABLE_TABLES = CACHALOT_ONLY_CACHABLE_TABLES.split(",")
-    else:
-        CACHALOT_ONLY_CACHABLE_TABLES = [
-            "database_user",
-            "django_content_type",
-            "database_room",
-        ]
-
-    CACHALOT_TIMEOUT = env.int("CACHALOT_TIMEOUT", 60 * 60 * 24 * 7)
-
-
-# if CACHALOT_ENABLED:
-#     install_cachalot()
+if CACHALOT_ENABLED:
+    install_cachalot()
